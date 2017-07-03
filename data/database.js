@@ -1,13 +1,5 @@
-/**
- *  Copyright (c) 2015, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
- */
-
 // Model types
+const data = require('./MOCK_DATA.json');
 class User {}
 class Widget {}
 
@@ -15,10 +7,16 @@ class Widget {}
 var viewer = new User();
 viewer.id = '1';
 viewer.name = 'Anonymous';
-var widgets = ['What\'s-it', 'Who\'s-it', 'How\'s-it'].map((name, i) => {
+
+var widgets = data.map((obj, i) => {
   var widget = new Widget();
-  widget.name = name;
-  widget.id = `${i}`;
+  widget.id = obj.id;
+  widget.first_name = obj.first_name;
+  widget.last_name = obj.last_name;
+  widget.email = obj.email;
+  widget.gender = obj.gender;
+  widget.ip_address = obj.ip_address;
+  // widget.id = `${i}`;
   return widget;
 });
 

@@ -1,12 +1,18 @@
 import Relay from 'react-relay';
 
-export default class extends Relay.Route {
+export default class AppHomeRoute extends Relay.Route {
+  static routeName = 'AppHomeRoute';
   static queries = {
-    viewer: () => Relay.QL`
-      query {
-        viewer
+    viewer: (Component) => Relay.QL`
+      query RootQuery {
+        viewer { ${Component.getFragment('viewer')} }
       }
     `,
   };
-  static routeName = 'AppHomeRoute';
 }
+
+
+// viewer: () => Relay.QL`
+//       query {
+//         viewer
+//       }
